@@ -114,7 +114,7 @@
 
   function pl(mat) {
     saveModification(mat)
-    
+
     if (mat == globalmat) {
       player.seekTo(Math.floor(Math.random() * player.getDuration()));
     } else {
@@ -165,10 +165,11 @@
           strel.innerHTML = e.data.payload;
           break;
         case "modification":
+          console.warn("modification", e.data.payload);
+
           if (e.data.payload) {
 
             modification = e.data.payload
-            console.warn("modification", e.data.payload);
 
             pl(modification.vid_id)
             // console.warn("user_id", user_id);
@@ -180,6 +181,7 @@
 
 
   function saveModification(vid_id) {
+    console.warn("CALL save_modification")
     parentWindow.postMessage(
       {
         method: "save_modification",
