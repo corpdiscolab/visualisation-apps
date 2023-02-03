@@ -5,7 +5,7 @@
   <div id="over"></div>
   <div class="container" id="cont"></div>
   <div id="navigation">
-    <span class="button" onclick="pl('Wjt6yyNDWmc');" id="Wjt6yyNDWmc">Neon1</span>
+    <span class="button" onclick="pl('Wjt6yyNDWmc');" id="Wjt6yyNDWmc">Neon</span>
     <span class="button" onclick="pl('z1_X86D34Q0');" id="z1_X86D34Q0">Liquid</span>
     <span class="button" onclick="pl('dVkK36KOcqs');" id="dVkK36KOcqs">Aquarium</span>
     <span class="button" onclick="pl('fDxHjLaSaZ8');" id="fDxHjLaSaZ8">Alps</span><!--3PZ65s2qLTE-->
@@ -86,7 +86,10 @@
 
   tag.src = "https://www.youtube.com/iframe_api";
   var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  function first_start() {
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  }
 
   var player;
   function onYouTubeIframeAPIReady() {
@@ -169,12 +172,12 @@
           console.warn("modification", e.data.payload);
 
           if (e.data.payload) {
-
             modification = e.data.payload
-
+            globalmat = modification.vid_id
             pl(modification.vid_id)
-            // console.warn("user_id", user_id);
           }
+
+          first_start()
           break;
       }
     }
