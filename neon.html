@@ -1,169 +1,196 @@
 <html>
 
-  <body>
-	<div id="player"></div>
-	<div id="over"></div>
-    <div class="container" id="cont"></div>
-	<div id="navigation">
-		<span class="button" onclick="pl('Wjt6yyNDWmc');">Neon</span>
-		<span class="button" onclick="pl('z1_X86D34Q0');">Liquid</span>	
-		<span class="button" onclick="pl('dVkK36KOcqs');">Aquarium</span>
-		<span class="button" onclick="pl('fDxHjLaSaZ8');">Alps</span><!--3PZ65s2qLTE-->
-		<span class="button" onclick="pl('NUKKzdVy0EI');">Fire</span><!--GbXYZwUigCM-->
-		<span class="button" onclick="pl('NhjiUz9w97U');">Rain</span>
-		<span class="button" onclick="pl('5nEzCv5u1O8');">Zemo</span>
-		<span class="button" onclick="pl('3IWtVsg7GKQ');"># </span>	
-		<span class="button" onclick="pl('TcxOp0jnSVQ');"># </span>	
-		<span class="button" onclick="pl('T87JVluOJaw');"># </span>	
-		<!--span class="button" onclick="pl('cWuzJBboQyE');"># </span><!--Floating In Space-->
-	</div>
-  </body>
-  
+<body>
+  <div id="player"></div>
+  <div id="over"></div>
+  <div class="container" id="cont"></div>
+  <div id="navigation">
+    <span class="button" onclick="pl('Wjt6yyNDWmc');" id="Wjt6yyNDWmc">Neon</span>
+    <span class="button" onclick="pl('z1_X86D34Q0');" id="z1_X86D34Q0">Liquid</span>
+    <span class="button" onclick="pl('dVkK36KOcqs');" id="dVkK36KOcqs">Aquarium</span>
+    <span class="button" onclick="pl('fDxHjLaSaZ8');" id="fDxHjLaSaZ8">Alps</span><!--3PZ65s2qLTE-->
+    <span class="button" onclick="pl('NUKKzdVy0EI');" id="NUKKzdVy0EI">Fire</span><!--GbXYZwUigCM-->
+    <span class="button" onclick="pl('NhjiUz9w97U');" id="NhjiUz9w97U">Rain</span>
+    <span class="button" onclick="pl('5nEzCv5u1O8');" id="5nEzCv5u1O8">Zemo</span>
+    <span class="button" onclick="pl('3IWtVsg7GKQ');" id="3IWtVsg7GKQ"># </span>
+    <span class="button" onclick="pl('TcxOp0jnSVQ');" id="TcxOp0jnSVQ"># </span>
+    <span class="button" onclick="pl('T87JVluOJaw');" id="T87JVluOJaw"># </span>
+    <!--span class="button" onclick="pl('cWuzJBboQyE');"># </span><!--Floating In Space-->
+  </div>
+</body>
+
 
 <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 
-      body {
-        padding: 0;
-        margin: 0;
-		background-color: black;
-      }
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: black;
+  }
 
-      #over {
-		position:absolute;
-		left:0;
-		top:0;
-		width:100%;
-		height:100%;
-		z-index:1000;
-      }
+  #over {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+  }
 
-      .container {
-		color: white;
-		font-size: 40px;
-		font-family: "Poppins", sans-serif;
-		text-align: center;
-		position:absolute;
-		left:10%;
-		top:40%;
-		width:80%;
-		height:20%;
-		z-index:2000;
-      }
-	  
-	  #navigation {
-		position:absolute;
-		left:0;
-		text-align: center;
-		bottom:0;
-		width:100%;
-		height:5%;
-		z-index:3000;
-      }
-	  
-	  .button {
-		margin: 0 7px 0 7px;
-		cursor: hand;
-		color: white;
-		opacity: 0.2;
-		font-size: 12px;
-		font-family: "Poppins", sans-serif;
-	  }
-	  
-	  .button:hover {
-		color: #ffaaaa;
-		opacity: 0.8;
-	  }
-	  
+  .container {
+    color: white;
+    font-size: 40px;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    position: absolute;
+    left: 10%;
+    top: 40%;
+    width: 80%;
+    height: 20%;
+    z-index: 2000;
+  }
+
+  #navigation {
+    position: absolute;
+    left: 0;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    height: 5%;
+    z-index: 3000;
+  }
+
+  .button {
+    margin: 0 7px 0 7px;
+    cursor: hand;
+    color: white;
+    opacity: 0.2;
+    font-size: 12px;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .button:hover {
+    color: #ffaaaa;
+    opacity: 0.8;
+  }
 </style>
-  
+
 <script>
 
-	var globalmat = "Wjt6yyNDWmc";
+  var globalmat = "Wjt6yyNDWmc";
+  let modification
 
-	var tag = document.createElement('script');
-	  
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-      var player;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          height: '100%',
-          width: '100%',
-          videoId: globalmat,
-		  playerVars: {'controls': 0, 'loop': 1 },
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange,
-			'onPlaybackRateChange': onPlaybackRateChange
+  var tag = document.createElement('script');
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '100%',
+      width: '100%',
+      videoId: globalmat,
+      playerVars: { 'controls': 0, 'loop': 1 },
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange,
+        'onPlaybackRateChange': onPlaybackRateChange
+      }
+    });
+  }
+
+  function onPlayerReady(event) {
+    event.target.mute();
+    event.target.playVideo();
+    onPlaybackRateChange(event);
+  }
+
+  function onPlaybackRateChange(event) {
+  }
+
+  function pl(mat) {
+    saveModification(mat)
+    
+    if (mat == globalmat) {
+      player.seekTo(Math.floor(Math.random() * player.getDuration()));
+    } else {
+      player.loadVideoById(mat);
+      globalmat = mat;
+    }
+  }
+
+
+  var done = false;
+  function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
+      done = true;
+    }
+    if (event.data === YT.PlayerState.ENDED) {
+      player.playVideo();
+    }
+  }
+
+
+  let parentWindow = {};
+
+  window.onload = () => {
+    parentWindow = window.parent || window.top;
+
+    //Init method
+    if (parentWindow) {
+      parentWindow.postMessage(
+        {
+          method: "init",
+          value: [
+            "phrase",
+            "modification",
+
+          ],
+        },
+        "*"
+      );
+    }
+  };
+
+  window.addEventListener("message", function (e) {
+    // Get the sent data
+    if (e.data && e.data.datatype) {
+      switch (e.data.datatype) {
+        case "phrase":
+          let strel = document.getElementById("cont");
+          strel.innerHTML = e.data.payload;
+          break;
+        case "modification":
+          if (e.data.payload) {
+
+            modification = e.data.payload
+            console.warn("modification", e.data.payload);
+
+            pl(modification.vid_id)
+            // console.warn("user_id", user_id);
           }
-        });
+          break;
       }
-	  
-      function onPlayerReady(event) {
-		event.target.mute();
-        event.target.playVideo();
-		onPlaybackRateChange(event);
-      }
-
-      function onPlaybackRateChange(event) {
-      }
-
-	  function pl(mat){
-		if(mat==globalmat){
-			player.seekTo(Math.floor(Math.random() * player.getDuration()));
-		}else{
-			player.loadVideoById(mat);
-			globalmat = mat;
-		}
-	  }
+    }
+  });
 
 
-      var done = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          done = true;
-        }
-		if (event.data === YT.PlayerState.ENDED) {
-            player.playVideo();
-        }
-      }	  
-
-
-      let parentWindow = {};
-
-      window.onload = () => {
-        parentWindow = window.parent || window.top;
-
-        //Init method
-        if (parentWindow) {
-          parentWindow.postMessage(
-            {
-              method: "init",
-              value: [
-                "phrase",
-              ],
-            },
-            "*"
-          );
-        }
-      };
-
-      window.addEventListener("message", function (e) {
-        // Get the sent data
-        if (e.data && e.data.datatype) {
-          switch (e.data.datatype) {
-            case "phrase":
-              let strel = document.getElementById("cont");
-              strel.innerHTML = e.data.payload;
-              break;
-          }
-        }
-      });
-
+  function saveModification(vid_id) {
+    parentWindow.postMessage(
+      {
+        method: "save_modification",
+        value: {
+          vid_id: vid_id,
+        },
+      },
+      "*"
+    );
+  }
 
 </script>
-  
+
 </html>
