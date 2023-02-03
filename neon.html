@@ -164,10 +164,7 @@
     // Get the sent data
     if (e.data && e.data.datatype) {
       switch (e.data.datatype) {
-        case "phrase":
-          let strel = document.getElementById("cont");
-          strel.innerHTML = e.data.payload;
-          break;
+
         case "modification":
           console.warn("modification", e.data.payload);
 
@@ -177,7 +174,12 @@
             pl(modification.vid_id)
           }
 
+          break;
+        case "phrase":
+          let strel = document.getElementById("cont");
+          strel.innerHTML = e.data.payload;
           first_start()
+
           break;
       }
     }
